@@ -1,0 +1,800 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeffinsha T | Software Developer</title>
+
+<style>
+:root {
+  --bg: #080b16;
+  --card: #111729;
+  --text: #f5f7ff;
+  --muted: #a7b0c5;
+  --accent: #8b7bff;
+  --cyan: #45e0d0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+nav {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 8%;
+  background: rgba(8, 11, 22, .88);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #252b42;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.nav-links a:hover {
+  color: var(--cyan);
+}
+
+.menu {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+section {
+  padding: 100px 8%;
+  scroll-margin-top: 65px;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: #7659ff;
+  filter: blur(150px);
+  opacity: .22;
+  top: 15%;
+  right: 5%;
+  animation: glow 5s infinite alternate;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  animation: slideIn 1s ease both;
+}
+
+.tag {
+  color: var(--cyan);
+  letter-spacing: 3px;
+  font-size: 13px;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  line-height: 1.15;
+  margin: 20px 0;
+}
+
+.gradient {
+  background: linear-gradient(90deg, #a99bff, #45e0d0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.hero p, .section-intro {
+  color: var(--muted);
+  max-width: 620px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-top: 28px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 23px;
+  border-radius: 8px;
+  font-weight: bold;
+  transition: .3s;
+  border: 1px solid var(--accent);
+}
+
+.btn.primary {
+  background: var(--accent);
+  color: white;
+}
+
+.btn:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px #8b7bff44;
+}
+
+.profile {
+  width: 250px;
+  height: 250px;
+  min-width: 200px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: linear-gradient(135deg, #24254c, #112e39);
+  display: grid;
+  place-items: center;
+  font-size: 65px;
+  font-weight: bold;
+  color: white;
+  box-shadow: 0 0 60px #8b7bff33;
+  animation: float 4s ease-in-out infinite;
+  position: relative;
+  z-index: 1;
+}
+
+h2 {
+  font-size: clamp(30px, 4vw, 42px);
+  margin-bottom: 12px;
+}
+
+.section-intro {
+  margin-bottom: 35px;
+}
+
+.center {
+  text-align: center;
+}
+
+.center .section-intro {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.card {
+  background: linear-gradient(145deg, #141b30, #0d1220);
+  border: 1px solid #29314b;
+  padding: 25px;
+  border-radius: 15px;
+  transition: transform .35s, border-color .35s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  border-color: var(--accent);
+}
+
+.card h3 {
+  margin: 10px 0;
+}
+
+.card p, .muted {
+  color: var(--muted);
+}
+
+.icon {
+  font-size: 30px;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skill {
+  background: #171e33;
+  border: 1px solid #333c58;
+  border-radius: 8px;
+  padding: 10px 16px;
+  transition: .3s;
+}
+
+.skill:hover {
+  background: var(--accent);
+  transform: scale(1.06);
+}
+
+.project-links {
+  display: inline-block;
+  margin-top: 16px;
+  color: var(--cyan);
+}
+
+.timeline {
+  max-width: 800px;
+  margin: auto;
+  border-left: 2px solid var(--accent);
+  padding-left: 28px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 30px;
+  background: var(--card);
+  border-radius: 12px;
+  padding: 22px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -36px;
+  top: 28px;
+  width: 13px;
+  height: 13px;
+  background: var(--cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 12px var(--cyan);
+}
+
+.contact-box {
+  max-width: 720px;
+  margin: auto;
+  text-align: center;
+  background: linear-gradient(145deg, #171c37, #101a27);
+  border: 1px solid #343b5b;
+  border-radius: 20px;
+  padding: 40px 25px;
+}
+
+.contact-details {
+  margin: 25px 0;
+  display: grid;
+  gap: 12px;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px;
+  border-top: 1px solid #252b42;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-18px); }
+}
+
+@keyframes glow {
+  from { transform: scale(1); }
+  to { transform: scale(1.25); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-35px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 800px) {
+  .hero {
+    flex-direction: column-reverse;
+    justify-content: center;
+    text-align: center;
+    padding-top: 130px;
+  }
+
+  .hero-content { margin: auto; }
+  .buttons { justify-content: center; }
+  .profile { width: 175px; height: 175px; font-size: 45px; }
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  nav { padding: 15px 5%; }
+  .menu { display: block; }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 65px;
+    left: 0;
+    width: 100%;
+    background: #0c1020;
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .nav-links.open { display: flex; }
+  section { padding: 75px 6%; }
+  .cards { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal { opacity: 1; transform: none; }
+}
+/* Profile photo */
+.profile {
+  width: 250px;
+  height: 250px;
+  min-width: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #8b7bff;
+  box-shadow: 0 0 35px #8b7bff55;
+  animation: float 4s ease-in-out infinite;
+}
+
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+/* Resume view */
+
+.resume-viewer {
+  width: 100%;
+  max-width: 900px;
+  margin: 30px auto;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background: #ffffff;
+}
+
+.resume-viewer iframe {
+  display: block;
+  width: 100%;
+  height: 700px;
+  border: none;
+}
+
+@media (max-width: 600px) {
+  .resume-viewer iframe {
+    height: 500px;
+  }
+}
+
+
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#home" class="logo">Jeffinsha T</a>
+
+  <button class="menu" id="menu" aria-label="Toggle navigation"
+    aria-expanded="false">☰</button>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="tag">Welcome to my portfolio</span>
+    <h1>Hi, I'm <span class="gradient">Jeffinsha T</span></h1>
+    <h2 style="font-size: clamp(23px, 3vw, 34px)">
+      I'm a <span class="gradient" id="typing"></span>
+    </h2>
+
+    <p>
+      Computer Science graduate passionate about Java development,
+      web technologies, and building useful software applications.
+      I'm eager to learn, grow, and contribute to real-world projects.
+    </p>
+
+    
+
+<div class="buttons">
+  <a href="#projects" class="btn primary">
+    Explore My Work ↗
+  </a>
+
+  <a href="./JEFFINSHA_T.pdf"
+     class="btn"
+     target="_blank"
+     rel="noopener noreferrer">
+    👁 View My Resume
+  </a>
+
+  <a href="./JEFFINSHA_T.pdf"
+     class="btn"
+     download="Jeffinsha-Resume.pdf">
+    ↓ Download My Resume
+  </a>
+
+  <a href="#contact" class="btn">
+    Contact Me
+  </a>
+</div>
+
+
+  </div>
+
+  <div class="profile">
+  <img src="./Profile.jpeg" alt="Jeffinsha T">
+</div>
+</section>
+
+<section id="about" class="reveal">
+  <h2>About <span class="gradient">Me</span></h2>
+  <p class="section-intro">
+    A little about my background and what I bring to a development team.
+  </p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="icon">🎓</div>
+      <h3>Education</h3>
+      <p>B.E. Computer Science and Engineering</p>
+      <p>RVS College of Engineering and Technology</p>
+      <p>2021–2025 · CGPA 7.8</p>
+    </article>
+
+    <article class="card">
+      <div class="icon">💻</div>
+      <h3>Development</h3>
+      <p>
+        Knowledge of Java, Spring Boot, REST APIs, SQL,
+        HTML, CSS, JavaScript, and frontend technologies.
+      </p>
+    </article>
+
+    <article class="card">
+      <div class="icon">🚀</div>
+      <h3>My Approach</h3>
+      <p>
+        Analytical thinking, teamwork, adaptability, and
+        continuous learning to solve technical problems.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section id="skills" class="reveal">
+  <h2>Technical <span class="gradient">Skills</span></h2>
+  <p class="section-intro">Technologies I've learned and worked with.</p>
+
+  <h3 style="margin-bottom:15px">Programming</h3>
+  <div class="skills" style="margin-bottom:28px">
+    <span class="skill">Java</span>
+    <span class="skill">JavaScript</span>
+  </div>
+
+  <h3 style="margin-bottom:15px">Frontend</h3>
+  <div class="skills" style="margin-bottom:28px">
+    <span class="skill">HTML5</span>
+    <span class="skill">CSS3</span>
+    <span class="skill">Bootstrap</span>
+    <span class="skill">React</span>
+    <!-- <span class="skill">Flutter</span> -->
+  </div>
+
+  <h3 style="margin-bottom:15px">Backend & Database</h3>
+  <div class="skills" style="margin-bottom:28px">
+    <span class="skill">Spring Boot</span>
+    <span class="skill">RESTful Web Services</span>
+    <span class="skill">JDBC</span>
+    <span class="skill">SQL</span>
+    <span class="skill">MySQL</span>
+    <span class="skill">Apache Tomcat</span>
+  </div>
+
+  <h3 style="margin-bottom:15px">Professional Skills</h3>
+  <div class="skills">
+    <span class="skill">Team Collaboration</span>
+    <span class="skill">Analytical Thinking</span>
+    <span class="skill">Adaptability</span>
+    <span class="skill">Quick Learner</span>
+  </div>
+</section>
+
+<section id="projects" class="reveal">
+  <h2>Featured <span class="gradient">Projects</span></h2>
+  <p class="section-intro">
+    Projects demonstrating my software development and technical skills.
+  </p>
+
+  <div class="cards">
+    <article class="card">
+      <div class="icon">🔐</div>
+      <h3>Cybersecurity Defense Strategy</h3>
+      <p>
+        Explored session hijacking and man-in-the-middle attacks,
+        using Burp Suite to simulate attacks and investigate
+        defenses based on secure network protocols.
+      </p>
+      <div class="skills" style="margin-top:18px">
+        <span class="skill">Cybersecurity</span>
+        <span class="skill">Burp Suite</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="icon">🖥️</div>
+      <h3>Online Internship Management System</h3>
+      <p>
+        Developed a web application for companies to post
+        internships and users to log in according to their roles.
+        Implemented server-side logic and database operations.
+      </p>
+      <div class="skills" style="margin-top:18px">
+        <span class="skill">Java</span>
+        <span class="skill">JSP & Servlets</span>
+        <span class="skill">MySQL</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="icon">🌐</div>
+      <h3>Responsive Website</h3>
+      <p>
+        Built a responsive frontend website using HTML, CSS,
+        and JavaScript, with layouts designed for different
+        screen sizes.
+      </p>
+      <div class="skills" style="margin-top:18px">
+        <span class="skill">HTML</span>
+        <span class="skill">CSS</span>
+        <span class="skill">JavaScript</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="experience" class="reveal">
+  <h2>Training & <span class="gradient">Experience</span></h2>
+  <p class="section-intro">
+    My learning journey in software development and cybersecurity.
+  </p>
+
+  <div class="timeline">
+    <!-- <article class="timeline-item">
+      <h3>Software Developer Intern</h3>
+      <p class="muted">CDC IT Solutions Pvt Ltd · October 2026</p>
+      <p>
+        Internship opportunity focused on learning software
+        development and contributing to assigned technical work.
+      </p>
+    </article> -->
+
+    <article class="timeline-item">
+      <h3>Java Full Stack Training</h3>
+      <p class="muted">QSpiders · Velachery, Chennai</p>
+      <p>
+        Training in Java, web technologies, JDBC, and SQL,
+        with continued learning in full-stack development.
+      </p>
+    </article>
+
+    <article class="timeline-item">
+      <h3>Java Developer Internship</h3>
+      <p class="muted">Elysium Academy · 1 month</p>
+      <p>Java development internship experience.</p>
+    </article>
+
+    <article class="timeline-item">
+      <h3>Cybersecurity Internship</h3>
+      <p class="muted">Prompt Infotech · 2 months</p>
+      <p>Cybersecurity training and project experience.</p>
+    </article>
+  </div>
+</section>
+
+<section id="resume" class="section">
+  <h2 class="section-title">My Resume</h2>
+  <p class="section-subtitle">
+    Explore my education, technical skills, and experience.
+  </p>
+
+  <div class="resume-viewer">
+    <iframe
+      src="Jeffinsha-Resume.pdf"
+      title="Jeffinsha T Resume"
+      width="100%"
+      height="700">
+    </iframe>
+  </div>
+
+  <div class="buttons">
+    <a href="Jeffinsha-Resume.pdf"
+       class="btn"
+       target="_blank"
+       rel="noopener noreferrer">
+      Open Resume in New Tab ↗
+    </a>
+
+    <a href="Jeffinsha-Resume.pdf"
+       class="btn primary"
+       download="Jeffinsha-Resume.pdf">
+      Download PDF ↓
+    </a>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div class="contact-box">
+    <span class="tag">LET'S CONNECT</span>
+    <h2 style="margin-top:15px">
+      Have a project in <span class="gradient">mind?</span>
+    </h2>
+    <p class="muted">
+      I'm open to connecting with developers, recruiters,
+      and teams working on interesting software projects.
+    </p>
+
+    <div class="contact-details">
+      <p>✉️ <a href="mailto:jeffytj17@gmail.com">
+        jeffytj17@gmail.com</a></p>
+
+      <p>📞 <a href="tel:+918754910016">
+        +91 8754910016</a></p>
+
+      <p>💼 <a
+        href="https://linkedin.com/in/jeffinsha-t-3b21a128b"
+        target="_blank" rel="noopener noreferrer">
+        Connect on LinkedIn ↗</a></p>
+    </div>
+
+    <a class="btn primary"
+       href="mailto:jeffytj17@gmail.com?subject=Portfolio%20Contact">
+       Send Me an Email
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>Designed with care by Jeffinsha T © <span id="year"></span></p>
+  <p>Java Developer · Software Development Enthusiast</p>
+</footer>
+
+<script>
+// Animated typing effect
+const words = [
+  "Java Developer",
+  "Software Developer",
+  "Web Developer"
+];
+
+const typing = document.getElementById("typing");
+let wordIndex = 0;
+let charIndex = 0;
+let deleting = false;
+
+function typeEffect() {
+  const word = words[wordIndex];
+
+  typing.textContent = word.substring(0, charIndex);
+
+  if (!deleting) {
+    charIndex++;
+
+    if (charIndex > word.length) {
+      deleting = true;
+      setTimeout(typeEffect, 1100);
+      return;
+    }
+  } else {
+    charIndex--;
+
+    if (charIndex < 0) {
+      charIndex = 0;
+      deleting = false;
+      wordIndex = (wordIndex + 1) % words.length;
+    }
+  }
+
+  setTimeout(typeEffect, deleting ? 45 : 90);
+}
+
+typeEffect();
+
+// Reveal sections when scrolling
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(section => {
+  observer.observe(section);
+});
+
+// Mobile navigation
+const menu = document.getElementById("menu");
+const navLinks = document.getElementById("navLinks");
+
+menu.addEventListener("click", () => {
+  const open = navLinks.classList.toggle("open");
+  menu.setAttribute("aria-expanded", String(open));
+  menu.textContent = open ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navLinks.classList.remove("open");
+    menu.setAttribute("aria-expanded", "false");
+    menu.textContent = "☰";
+  });
+});
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
